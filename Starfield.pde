@@ -9,11 +9,16 @@ void draw()
 }
 class NormalParticle
 {
-	//your code here
+double dX, dY, speed, angle;
+int colour;
+NormalParticle(float x, float y){
+
+}
 }
 interface Particle
 {
 	//your code here
+
 }
 class OddballParticle //uses an interface
 {
