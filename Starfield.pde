@@ -1,17 +1,23 @@
 //your code here
-Particle jack = new NormalParticle();
+Particle[] jack;
 void setup()
 {
 	//your code here
   size(400, 400);
-
+  jack = new Particle[100]
+  for(int i = 0; i < 100; i ++){
+  	if(i % 2 == 0){
+  		jack[i] = new NormalParticle();
+  	}
+  	jack[i] = new OddballParticle;
+  	}
+  }
 }
 void draw()
 {
 	//your code here
     background(0);
-    jack.move();
-    jack.show();
+   
 
 }
 class NormalParticle implements Particle
@@ -26,8 +32,6 @@ NormalParticle(){
   colour = color(255);
 }
 public void move(){
-  dSpeed = Math.random() * 10;
-  dTheta = (Math.random() * 2) * Math.PI;
   dX += Math.cos(dTheta) * dSpeed;
   dY += Math.sin(dTheta) * dSpeed;
 }
@@ -37,12 +41,28 @@ public void show(){
 }
 interface Particle
 {
-	public void move();
+  public void move();
   public void show();
 }
-class OddballParticle //implements Particle//uses an interface
+class OddballParticle implements Particle//uses an interface
 {
-	//your code here
+double tX, tY, tSpeed, tTheta;
+int coloure;
+OddballParticle() {
+ tX = 250;
+ tY = 250;
+ tSpeed = Math.random() * 10;
+ tTheta = Math.random() * 2 * Math.PI;
+ coloure = color(255);
+}
+public void move() {
+  tX += Math.cos(tTheta) * tSpeed;
+  tY += Math.sin(tTheta) * tSpeed;
+}
+public void show() {
+    ellipse(tX, tY, 20, 20);		
+}
+
 }
 class JumboParticle extends NormalParticle //uses inheritance
 {
