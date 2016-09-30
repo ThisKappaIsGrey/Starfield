@@ -1,17 +1,17 @@
 //your code here
-Particle[] jack;
+ArrayList <Particle> jack;
 void setup()
 {
 	//your code here
   size(600, 600);
-  jack = new Particle[100];
-  for (int i = 0; i < jack.length; i++) { 
+  jack = new ArrayList<Particle>();
+  for (int i = 0; i < 100; i++) { 
   if(i % 2 == 0){  
-  jack[i] = new NormalParticle();	
+  jack.add(new NormalParticle());	
    }else if(i % 3 == 0){
-   	jack[i] = new OddballParticle();
+   	jack.add(new OddballParticle());
    }else{
-   	jack[i] = new JumboParticle();
+   	jack.add(new JumboParticle());
    }
   } 
 }
@@ -19,20 +19,21 @@ void draw()
 {
 	//your code here
     background(0);
-   for (int i = 0; i < jack.length; i++) { 
-  	jack[i].move();
-  	jack[i].show();
+   for (int i = 0; i < jack.size(); i++) { 
+   Particle jil = jack.get(i);
+  	jil.move();
+  	jil.show();
    } 
 
 }
 void mousePressed(){
-for (int i = 0; i < jack.length; i++) { 
-  if(i % 2 == 0){  
-  jack[i] = new NormalParticle();	
+for (int i = 0; i < 50; i++) { 
+ if(i % 2 == 0){  
+  jack.add(new NormalParticle());	
    }else if(i % 3 == 0){
-   	jack[i] = new OddballParticle();
+   	jack.add(new OddballParticle());
    }else{
-   	jack[i] = new JumboParticle();
+   	jack.add(new JumboParticle());
    }
   } 
 }
@@ -73,6 +74,8 @@ OddballParticle() {
  coloure = color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
 }
 public void move() {
+  tSpeed = Math.random() * 5;
+  tTheta = Math.random() * 2 * Math.PI;
   tX += Math.cos(tTheta) * tSpeed;
   tY += Math.sin(tTheta) * tSpeed;
 }
