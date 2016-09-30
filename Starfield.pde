@@ -27,9 +27,9 @@ void draw()
 
 }
 void mousePressed(){
-for (int i = 0; i < jack.length; i++) {
-  if(i % 2 == 0){
-  jack[i] = new NormalParticle();
+for (int i = 0; i < 50; i++) { 
+ if(i % 2 == 0){  
+  jack.add(new NormalParticle());	
    }else if(i % 3 == 0){
    	jack.add(new OddballParticle());
    }else{
@@ -46,7 +46,7 @@ NormalParticle(){
   dY = mouseY;
   dSpeed = Math.random() * 5;
   dTheta = (Math.random() * 2) * Math.PI;
-  colour = color((int)(Math.random() * 300), 0, 0);
+  colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
 }
 public void move(){
   dX += Math.cos(dTheta) * dSpeed;
@@ -71,7 +71,7 @@ OddballParticle() {
  tY = Math.random() * 600;
  tSpeed = Math.random() * 5;
  tTheta = Math.random() * 2 * Math.PI;
- coloure = color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
+ coloure = color((int)(Math.random() * 255), 0, (int)(Math.random() * 255));
 }
 public void move() {
   tSpeed = Math.random() * 5;
@@ -82,7 +82,7 @@ public void move() {
 public void show() {
 	fill(coloure);
   noStroke();
-    ellipse((float)tX, (float)tY, 10, 20);
+    ellipse((float)tX, (float)tY, 20, 10);
 }
 
 }
