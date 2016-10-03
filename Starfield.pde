@@ -39,22 +39,24 @@ for (int i = 0; i < 50; i++) {
 }
 class NormalParticle implements Particle
 {
-double dX, dY, dSpeed, dTheta;
+double dX, dY, dTheta;
+int dSpeed;
 int colour;
 NormalParticle(){
   dX = mouseX;
   dY = mouseY;
-  dSpeed = Math.random() * 5;
+  dSpeed = (int)(Math.random() * 5) + 1;
   dTheta = (Math.random() * 2) * Math.PI;
   colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
 }
 public void move(){
+  dTheta += (Math.random()) * Math.PI;
   dX += Math.cos(dTheta) * dSpeed;
   dY += Math.sin(dTheta) * dSpeed;
 }
 public void show(){
 	fill(colour);
-  ellipse((int)dX, (int)dY, 10, 10);
+  ellipse((int)dX, (int)dY, 5, 5);
 }
 }
 interface Particle
@@ -92,6 +94,6 @@ class JumboParticle extends NormalParticle //uses inheritance
 void show(){
 	fill(colour);
   noStroke();
-	ellipse((int)dX, (int)dY, 40, 40);
+	ellipse((int)dX, (int)dY, 20, 20);
 }
 }
