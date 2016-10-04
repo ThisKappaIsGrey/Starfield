@@ -14,6 +14,7 @@ void setup()
    	jack.add(new JumboParticle());
    }
   }
+  
 }
 void draw()
 {
@@ -23,8 +24,10 @@ void draw()
    Particle jil = jack.get(i);
   	jil.move();
   	jil.show();
+  	if(jack.getAlive() >= 50 && jack instanceof NormalParticle){
+  	Particle.remove(i);
+  }
    }
-
 }
 void mousePressed(){
 for (int i = 0; i < 50; i++) {
@@ -40,16 +43,17 @@ for (int i = 0; i < 50; i++) {
 class NormalParticle implements Particle
 {
 double dX, dY, dTheta, dSpeed;
-int colour;
+int colour, alive;
 NormalParticle(){
   dX = mouseX;
   dY = mouseY;
-  dSpeed = (Math.random() * 5);
+  dSpeed = (Math.random() * 10);
   dTheta = (Math.random() * 2) * Math.PI;
   colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
 }
 public void move(){
-  dTheta += (Math.random());
+  dTheta += 0.05;
+  alive += 1;
   dX += Math.cos(dTheta) * dSpeed;
   dY += Math.sin(dTheta) * dSpeed;
 }
@@ -57,26 +61,29 @@ public void show(){
 	fill(colour);
   ellipse((int)dX, (int)dY, 5, 5);
 }
+
+public int getAlive() {
+	return alive;
+}
 }
 interface Particle
 {
   public void move();
   public void show();
+  public int getAlive();
 }
 class OddballParticle implements Particle//uses an interface
 {
 double tX, tY, tSpeed, tTheta;
-int coloure;
+int coloure,alive;
 OddballParticle() {
- tX = Math.random() * 600;
- tY = Math.random() * 600;
+ tX = mouseX;
+ tY = mouseY;
  tSpeed = Math.random() * 5;
  tTheta = Math.random() * 2 * Math.PI;
  coloure = color((int)(Math.random() * 255), 0, (int)(Math.random() * 255));
 }
 public void move() {
-  tSpeed = Math.random() * 5;
-  tTheta = Math.random() * 2 * Math.PI;
   tX += Math.cos(tTheta) * tSpeed;
   tY += Math.sin(tTheta) * tSpeed;
 }
@@ -84,6 +91,10 @@ public void show() {
 	fill(coloure);
   noStroke();
     ellipse((float)tX, (float)tY, 20, 10);
+}
+
+public int getAlive() {
+	return alive;
 }
 }
 class JumboParticle extends NormalParticle //uses inheritance
