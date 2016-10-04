@@ -1,7 +1,7 @@
 Starfield (with an Oddball and Jumbo)
 =========================
 For this assignment you will make a animation of fireworks. This common animation is called a "starfield" since it can also be used to simulate movement through a field of stars. You may find slides 1 - 131 on <a href="https://drive.google.com/open?id=0Bz2ZkT6qWPYTN3NOQkh1eGR4Wmc">OOP.pptx</a> helpful.
- 
+
 Program requirements:
 ---------------------
 Your program must use three classes to model the particles. A "Normal" particle class, an "Oddball" particle class and a "Jumbo" particle class. All the particles must be stored in a single array using an interface. The Jumbo particle class must use inheritance.
@@ -28,7 +28,7 @@ Suggested steps to completing this assignment
 11. Change your array of NormalParticles to an array of type `Particle`.
 12. Change the first element in the array to a OddballParticle instead of a NormalParticle
 13. Run your program. Make sure you can see the Oddball.
-13. Now, write a new Jumbo class that `extends NormalParticle` (or `extends OddballParticle`). In this class you will only need to override the one method `public void show()` to draw a larger ellipse. 
+13. Now, write a new Jumbo class that `extends NormalParticle` (or `extends OddballParticle`). In this class you will only need to override the one method `public void show()` to draw a larger ellipse.
 14. Change the second element in the array to a Jumbo instead of a normal Particle. Run your program and make sure you can see the Jumbo.
 15. Submit the url of your GitHub webpage via the school loop drop box for the assignment   
 

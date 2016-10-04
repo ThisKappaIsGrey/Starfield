@@ -5,9 +5,9 @@ void setup()
 	//your code here
   size(600, 600);
   jack = new ArrayList<Particle>();
-  for (int i = 0; i < 100; i++) { 
-  if(i % 2 == 0){  
-  jack.add(new NormalParticle());	
+  for (int i = 0; i < 100; i++) {
+  if(i % 2 == 0){
+  jack.add(new NormalParticle());
    }else if(i % 3 == 0){
    	jack.add(new OddballParticle());
    }else{
@@ -19,17 +19,17 @@ void draw()
 {
 	//your code here
     background(0);
-   for (int i = 0; i < jack.size(); i++) { 
+   for (int i = 0; i < jack.size(); i++) {
    Particle jil = jack.get(i);
   	jil.move();
   	jil.show();
-   } 
+   }
 
 }
 void mousePressed(){
-for (int i = 0; i < 50; i++) { 
- if(i % 2 == 0){  
-  jack.add(new NormalParticle());	
+for (int i = 0; i < 50; i++) {
+ if(i % 2 == 0){
+  jack.add(new NormalParticle());
    }else if(i % 3 == 0){
    	jack.add(new OddballParticle());
    }else{
@@ -39,18 +39,17 @@ for (int i = 0; i < 50; i++) {
 }
 class NormalParticle implements Particle
 {
-double dX, dY, dTheta;
-int dSpeed;
+double dX, dY, dTheta, dSpeed;
 int colour;
 NormalParticle(){
   dX = mouseX;
   dY = mouseY;
-  dSpeed = (int)(Math.random() * 5) + 1;
+  dSpeed = (Math.random() * 5);
   dTheta = (Math.random() * 2) * Math.PI;
   colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
 }
 public void move(){
-  dTheta += (Math.random()) * Math.PI;
+  dTheta += (Math.random());
   dX += Math.cos(dTheta) * dSpeed;
   dY += Math.sin(dTheta) * dSpeed;
 }
@@ -86,7 +85,6 @@ public void show() {
   noStroke();
     ellipse((float)tX, (float)tY, 20, 10);
 }
-
 }
 class JumboParticle extends NormalParticle //uses inheritance
 {
