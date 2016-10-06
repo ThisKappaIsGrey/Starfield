@@ -1,6 +1,6 @@
 //your code here
 ArrayList <Particle> jack = new ArrayList<Particle>();
-int case = 1;
+char caseN = '1';
 void setup() {
   size(600, 600);
   for (int i = 0; i < 100; i++) {
@@ -36,8 +36,21 @@ void mousePressed(){
    	}
   }
 }
-void mousePressed{
-	case'1';
+void keyPressed(){
+	switch(key){
+		case '1':
+		caseN = '1';
+		break;
+		case '2':
+		caseN = '2';
+		break;
+		case '3':
+		caseN = '3';
+		break;
+		default:
+		caseN = '1';
+		break;
+	}
 	
 }
 class NormalParticle implements Particle
@@ -48,14 +61,23 @@ NormalParticle(){
   dX = mouseX;
   dY = mouseY;
   dSpeed = (Math.random() * 10);
-  dTheta = ((int)(Math.random() * 360)) * Math.PI;
   colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
+  dTheta = ((int)(Math.random() * 360)) * Math.PI;
 }
 public void move(){
-  dTheta += 0.05;
-  dX += Math.cos(dTheta) * dSpeed;
-  dY += Math.sin(dTheta) * dSpeed;
-  moves++;
+	switch(caseN){
+		case '1':
+			dTheta += ((int)(Math.random() * 10));
+		break;
+		case '2':
+			dTheta += ((int)(Math.random() * 10)) * (Math.PI/180);
+		break;
+		case '3':
+			dTheta += (Math.random() * 2);
+		break;
+	}
+	dX += Math.cos(dTheta) * dSpeed;
+  	dY += Math.sin(dTheta) * dSpeed;
 }
 public void show(){
   fill(colour);
