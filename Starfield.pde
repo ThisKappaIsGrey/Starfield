@@ -12,7 +12,7 @@ void setup() {
    		jack.add(new JumboParticle());
    }
   }
-  
+
 }
 void draw() {
  background(0);
@@ -20,9 +20,9 @@ void draw() {
    	Particle jil = jack.get(i);
   	jil.move();
   	jil.show();
-  	if(jil.getMoves() > 100 && jil instanceof OddballParticle){
+  	/*if(jil.getMoves() > 100 && jil instanceof OddballParticle){
   		jack.remove(i);
-  	}
+  	}*///this code would remove OddballParticle if it goes over 100 moves.
  }
 }
 void mousePressed(){
@@ -51,7 +51,7 @@ void keyPressed(){
 		caseN = '1';
 		break;
 	}
-	
+
 }
 class NormalParticle implements Particle
 {
@@ -62,18 +62,18 @@ NormalParticle(){
   dY = mouseY;
   dSpeed = (Math.random() * 10);
   colour = color((int)(Math.random() * 300), 0, (int)(Math.random() * 255));
-  dTheta = ((int)(Math.random() * 360)) * Math.PI;
+  dTheta = (Math.random() * 2) * Math.PI;
 }
 public void move(){
 	switch(caseN){
 		case '1':
-			dTheta += ((int)(Math.random() * 10));
+			dTheta += (Math.random() * 10) * (Math.PI/90);
 		break;
 		case '2':
 			dTheta += ((int)(Math.random() * 10)) * (Math.PI/180);
 		break;
 		case '3':
-			dTheta += (Math.random() * 2);
+			dTheta += (Math.random() * 20) * Math.PI;
 		break;
 	}
 	dX += Math.cos(dTheta) * dSpeed;
@@ -93,26 +93,27 @@ interface Particle
   public void show();
   public int  getMoves();
 }
-class OddballParticle implements Particle//uses an interface
+class OddballParticle implements Particle
 {
 double tX, tY, tSpeed, tTheta;
 int coloure, moves;
 OddballParticle() {
 	tX = mouseX;
 	tY = mouseY;
- 	tSpeed = Math.random() * 5;
+ 	tSpeed = Math.random() * 10;
  	tTheta = Math.random() * 2 * Math.PI;
  	coloure = color((int)(Math.random() * 255), 0, (int)(Math.random() * 255));
 }
 public void move() {
 	moves++;
+  tTheta += ((int)(Math.random() * 10)) * (Math.PI/180);
   tX += Math.cos(tTheta) * tSpeed;
   tY += Math.sin(tTheta) * tSpeed;
 }
 public void show() {
 	fill(coloure);
   	noStroke();
-    ellipse((float)tX, (float)tY, 20, 10);
+    rect((float)tX, (float)tY, 30, 30);
 }
 public int getMoves(){
 	return moves;
